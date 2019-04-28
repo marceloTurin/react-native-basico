@@ -1,6 +1,19 @@
 import React, {Component} from 'react'; //importação do react
 import { View,Text,StyleSheet,Button,Image } from 'react-native'; //importação do react native
 
+class Imagem extends Component{
+
+  render(){
+
+    let imagem = {
+      uri: 'https://external-preview.redd.it/qrdCK2NINpo9AJAbd_quODHAxtU7YZqxccGlQSzuAAM.png?auto=webp&s=fefa1c0aaeefbb52b96b9c94c2646e182d6ea332'
+    }
+    return(
+      <Image source={imagem} style={{width:parseInt(this.props.largura),height:parseInt(this.props.altura)}} />
+    );
+  }
+}
+
 export default class PrimeiroProjeto extends Component{
 
   somar(n1,n2){
@@ -22,6 +35,8 @@ export default class PrimeiroProjeto extends Component{
        
 
         <Image source={imagem} style={{width:300,height:300}} />
+
+        <Imagem  largura='50' altura='50' />
 
         <Button title="Aperte" onPress={()=>{
           alert("Me apertou");
