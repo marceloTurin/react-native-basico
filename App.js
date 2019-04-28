@@ -52,15 +52,30 @@ export default class PrimeiroProjeto extends Component{
 
    
     return(
-      <View style={{paddingTop:20}}>
+      <View style={style.padrao}>
         <Janta comida='Bolacha'/>
+        <Text style={style.azulGrade}>Este é o texto 1</Text>
+        <Text style={style.vermelho}>Este é o texto 2</Text>
+        <Text style={[style.azulGrade,style.vermelho]}>Este é o texto 3</Text>
+        <Text style={[style.vermelho,style.azulGrade]}>Este é o texto 4</Text>
       </View>
     );
   }
 }
 
 const style = StyleSheet.create({
-  texto:{
-    fontSize:30
+
+  padrao:{
+    paddingTop:25,
+    backgroundColor: 'green'
+  },
+  azulGrade:{
+    color:'blue',
+    fontSize:30,
+    textAlign: 'center'
+  },
+  vermelho:{
+    color:'red',
+    fontSize:15
   }
 })
