@@ -1,6 +1,8 @@
 import React, {Component} from 'react'; //importação do react
 import { View,Text,StyleSheet,Button,Image } from 'react-native'; //importação do react native
 
+
+//Criação do Componente Imagem
 class Imagem extends Component{
 
   render(){
@@ -14,34 +16,44 @@ class Imagem extends Component{
   }
 }
 
-export default class PrimeiroProjeto extends Component{
+//Criação de uma State
 
-  somar(n1,n2){
-    return n1+n2;
+//State é uma informação mutavel que pode ser mudada a partir de um determinavel momento
+//Props é um informação estatica que não pode ser mudada
+class Janta extends Component{
+  constructor(props){
+    super(props);
+    this.state = {comida:props.comida};
+    var comidas = ['Pizza','Lasanha','Hamburgue','Sopa','Arroz'];
+
+    setInterval(()=>{
+      this.setState(previousState =>{
+        var n = Math.floor(Math.random() * comidas.length);
+
+        return {comida: comidas[n]};
+      })
+    },1000)
   }
-  render(){ //renderediza os componentes na tela
 
-    let imagem = {
-      uri: 'https://img7.anidb.net/pics/anime/7810.jpg'
-    }
-
-    let nome = 'Marcelo';
+  render(){
     return(
       <View>
-        <Text>Olá Mundo {nome}</Text>
-        <Text style={style.texto}>A soma de 2+2 é {this.somar(2,2)}</Text>
-        <Text style={{fontSize:25, color:'red',margin:20}}>Olá Mundo</Text>
+        <Text style={{textAlign:'center',fontWeight:'bold',fontSize:20,color:'red'}}>Hoje você vai jantar:</Text>
+        <Text style={{textAlign:'center',fontSize:20}}>{this.state.comida}</Text>
+      </View>
+    )
+  }
+}
 
-       
+export default class PrimeiroProjeto extends Component{
 
-        <Image source={imagem} style={{width:300,height:300}} />
+ 
+  render(){ //renderiza os componentes na tela
 
-        <Imagem  largura='50' altura='50' />
-
-        <Button title="Aperte" onPress={()=>{
-          alert("Me apertou");
-        }} />
-        <Button title="Aperte Novamente" onPress={()=> alert("Me apertou novamente")}/>
+   
+    return(
+      <View style={{paddingTop:20}}>
+        <Janta comida='Bolacha'/>
       </View>
     );
   }
