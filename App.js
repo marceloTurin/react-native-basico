@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; //importação do react
-import { View,Text,StyleSheet,Button } from 'react-native'; //importação do react native
+import { View,Text,StyleSheet,Button,Image } from 'react-native'; //importação do react native
 
 export default class PrimeiroProjeto extends Component{
 
@@ -8,13 +8,21 @@ export default class PrimeiroProjeto extends Component{
   }
   render(){ //renderediza os componentes na tela
 
+    let imagem = {
+      uri: 'https://img7.anidb.net/pics/anime/7810.jpg'
+    }
+
     let nome = 'Marcelo';
     return(
       <View>
         <Text>Olá Mundo {nome}</Text>
-        <Text>Olá Mundo</Text>
-        <Text>Olá Mundo</Text>
         <Text style={style.texto}>A soma de 2+2 é {this.somar(2,2)}</Text>
+        <Text style={{fontSize:25, color:'red',margin:20}}>Olá Mundo</Text>
+
+       
+
+        <Image source={imagem} style={{width:300,height:300}} />
+
         <Button title="Aperte" onPress={()=>{
           alert("Me apertou");
         }} />
