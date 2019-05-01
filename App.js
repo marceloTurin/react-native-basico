@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; //importação do react
-import { View,Text,StyleSheet,Button,Image,TextInput } from 'react-native'; //importação do react native
+import { View,Text,StyleSheet,Button,Image,TextInput,Alert } from 'react-native'; //importação do react native
 
 
 //Criação do Componente Imagem
@@ -49,8 +49,10 @@ export default class PrimeiroProjeto extends Component{
 
   constructor(props){
     super(props)
-    this.state = {texto:''}
-    this.mudarTexto = this.mudarTexto.bind(this)
+    this.state = {inputTexto: '', texto:''}
+    this.mudarTexto = this.mudarTexto.bind(this);
+
+    this.apertouBotao = this.apertouBotao.bind(this);
   }
 
   mudarTexto(t){
@@ -62,9 +64,18 @@ export default class PrimeiroProjeto extends Component{
       s.texto = '';
     }
     this.setState(s);
+  }
 
+  apertouBotao(){
+    let s = this.state;
 
-    
+    if(s.inputTexto == 'Marcelo'){
+      s.texto = 'Você acertou!';
+    } else{
+      s.texto = 'Você errou!';
+    }
+
+    this.setState(s);
   }
  
   render(){ //renderiza os componentes na tela
@@ -72,7 +83,9 @@ export default class PrimeiroProjeto extends Component{
    
     return(
       <View style={{paddingTop:30}}>
-        <TextInput style={styles.input} placeholder="Qual o seu nome?" onChangeText={this.mudarTexto} />
+        <TextInput style={styles.input} placeholder="Advinhe meu nome" onChangeText={(inputTexto)=> this.setState({
+          inputTexto})}/>
+        <Button title="Aperte em mim" onPress={this.apertouBotao}/>
         <Text style={styles.texto}>{this.state.texto}</Text>
       </View>
 
