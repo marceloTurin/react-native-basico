@@ -52,12 +52,11 @@ export default class PrimeiroProjeto extends Component{
 
    
     return(
-      <View style={style.padrao}>
-        <Janta comida='Bolacha'/>
-        <Text style={style.azulGrade}>Este é o texto 1</Text>
-        <Text style={style.vermelho}>Este é o texto 2</Text>
-        <Text style={[style.azulGrade,style.vermelho]}>Este é o texto 3</Text>
-        <Text style={[style.vermelho,style.azulGrade]}>Este é o texto 4</Text>
+      <View style={{flex:1,backgroundColor:'black'}}>
+       <View style={{flex:1,backgroundColor:'blue'}}></View>
+       <View style={{flex:1,backgroundColor:'green'}}></View>
+       <View style={{flex:1,backgroundColor:'yellow'}}></View>
+       <View style={{flex:3,backgroundColor:'red'}}></View>
       </View>
     );
   }
